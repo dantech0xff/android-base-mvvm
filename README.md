@@ -1,5 +1,8 @@
 ### I'll update this one later
 
+If you can't imagine what is MVVM, please read my medium article here first. It can fully explain the revolution of Software architecture pattern in Android apps development.
+[MVC, MVP, and MVVM Architecture Pattern from my 6 years of experience in Mobile apps Development](https://danhtran-dev.medium.com/mvc-mvp-mvvm-from-my-6-years-of-experience-in-mobile-apps-development-784ce5b44049)
+
 Find me
 - danhtran.dev@outlook.com
 - https://danhtran.dev
