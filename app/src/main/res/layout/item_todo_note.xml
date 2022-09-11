@@ -1,0 +1,73 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:layout_margin="@dimen/dimen_8"
+   app:cardElevation="0dp"
+   app:cardBackgroundColor="@color/bg_black_transparent_light"
+   app:cardCornerRadius="@dimen/dimen_12">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/dimen_12"
+        android:paddingRight="@dimen/dimen_12"
+        android:paddingLeft="@dimen/dimen_12"
+        android:paddingBottom="@dimen/dimen_12">
+
+        <TextView
+            android:id="@+id/item_notes_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico_regular"
+            android:gravity="start"
+            android:maxLines="1"
+            android:maxLength="22"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/todo" />
+
+        <TextView
+            android:id="@+id/item_notes_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico_regular"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:lineSpacingExtra="4dp"
+            android:maxLength="35"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_notes_title"
+            tools:text="@string/todo" />
+
+        <TextView
+            android:id="@+id/item_notes_update_time"
+            android:text="16/8/2021"
+            android:paddingTop="@dimen/dimen_8"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_notes_desc"
+            android:fontFamily="@font/pacifico_regular"
+            android:textAlignment="viewEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:id="@+id/imageView"
+            app:cornerRadius="@dimen/dimen_12"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:ratio="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_35">35dp</dimen>
+    <dimen name="dimen_45">45dp</dimen>
+    <dimen name="dimen_64">64dp</dimen>
+    <dimen name="dimen_100">100dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="circle_avt_thick">1dp</dimen>
+    <dimen name="text_size_count_small">12sp</dimen>
+    <dimen name="space">2dp</dimen>
+    <dimen name="cell_small">42dp</dimen>
+    <dimen name="text_settings">15sp</dimen>
+    <dimen name="setting_line_padding">3dp</dimen>
+    <dimen name="clock_top_height">35dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="couple_margin_bot">60dp</dimen>
+    <dimen name="dialog_padding">8dp</dimen>
+    <dimen name="tv_name_margin">5dp</dimen>
+    <dimen name="tv_name_padding">7dp</dimen>
+    <dimen name="dot_pass_code">10dp</dimen>
+    <dimen name="app_icon_dimen">200dp</dimen>
+    <dimen name="dialog_text_size">15sp</dimen>
+    <dimen name="btn_video_ad_min_width">60dp</dimen>
+    <dimen name="video_ad_icon_size">35dp</dimen>
+    <dimen name="icon_action_bar">40dp</dimen>
+    <dimen name="icon_feature_size">40dp</dimen>
+    <dimen name="ic_promote_size">50dp</dimen>
+    <dimen name="large_space">12dp</dimen>
+    <integer name="tooltip_text_size">12</integer>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">250dp</dimen>
+    <dimen name="nav_header_width">350dp</dimen>
+</resources>

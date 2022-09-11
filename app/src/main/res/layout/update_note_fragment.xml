@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.creative.mvvm.ui.view.XToolbar
+            android:id="@+id/x_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/update_note_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <include layout="@layout/layout_note_content"
+                android:id="@+id/wrap_note_content"/>
+            
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_save_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="32dp"
+                    android:contentDescription="@string/app_name"
+                    app:backgroundTint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/round_done_24"
+                    app:tint="@color/white" />
+            <RelativeLayout
+                    android:id="@+id/layout_water_mark"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_gravity="bottom|end"
+                    android:layout_width="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_height="80dp">
+
+                <ImageView
+                        android:src="@mipmap/ic_launcher"
+                        android:layout_alignParentBottom="true"
+                        android:scaleType="centerInside"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginBottom="18dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/water_mark_text"
+                        android:text="@string/app_name"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/pacifico_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</RelativeLayout>

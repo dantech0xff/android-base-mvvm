@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>admob_interstitial_id</key>
+        <value>ca-app-pub-2313206220567592/2176627382</value>
+    </entry>
+
+    <entry>
+        <key>admob_app_open_id</key>
+        <value>ca-app-pub-2313206220567592/5459439840</value>
+    </entry>
+
+    <entry>
+        <key>enable_select_color</key>
+        <value>false</value>
+    </entry>
+</defaultsMap>

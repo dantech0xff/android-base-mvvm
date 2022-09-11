@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A6B1E1</color>
+    <color name="colorPrimaryDark">#3F72AF</color>
+    <color name="colorAccent">#DBE2EF</color>
+<!--    ffa7cf-->
+    <color name="colorPrimaryTransparent">#80F9F7F7</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorActionbarWhiteTransparent">#50ffffff</color>
+    <color name="black_alpha">#99000000</color>
+    <color name="black">#FF000000</color>
+    <color name="black_17">#444444</color>
+    <color name="white_things">#DFDFDE</color>
+    <color name="text_primary">#1c1c1c</color>
+    <color name="bg_black_transparent_light">#30000000</color>
+
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+</resources>

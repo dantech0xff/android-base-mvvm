@@ -1,0 +1,13 @@
+<resources>
+    <declare-styleable name="RatioImageView">
+        <attr name="ratio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="RatioRecyclerView">
+        <attr name="rv_ratio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="RatioFrameLayout">
+        <attr name="fl_ratio" format="float" />
+    </declare-styleable>
+</resources>

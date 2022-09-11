@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/dimen_45"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/button_menu_drawer"
+        android:layout_width="@dimen/icon_action_bar"
+        android:layout_height="@dimen/icon_action_bar"
+        android:layout_marginStart="@dimen/dimen_8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorTransparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/round_menu_open_24"
+        android:visibility="visible" />
+    <TextView
+        android:id="@+id/title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/toolbar_title_text_size"
+        android:text="@string/app_name"
+        android:textStyle="bold"
+        android:fontFamily="@font/pacifico_regular"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageButton
+        android:id="@+id/button_right_menu"
+        android:layout_width="@dimen/icon_feature_size"
+        android:layout_height="@dimen/icon_feature_size"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:layout_gravity="end"
+        android:background="@drawable/bg_circle_black_transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/round_border_color_24"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:visibility="visible" />
+</FrameLayout>

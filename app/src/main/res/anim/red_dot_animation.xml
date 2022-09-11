@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:repeatMode="reverse"
+    android:fillAfter="false"
+    android:repeatCount="infinite">
+    <scale
+        android:interpolator="@android:anim/linear_interpolator"
+        android:duration="800"
+        android:fromXScale="0.85"
+        android:fromYScale="0.85"
+        android:toXScale="1"
+        android:toYScale="1"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatMode="reverse"
+        android:fillAfter="false"
+        android:repeatCount="infinite"/>
+</set>

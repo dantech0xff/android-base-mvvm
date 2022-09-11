@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.creative.mvvm.ui.view.XToolbar
+            android:id="@+id/x_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/root_notes_container"
+                android:background="@color/colorTransparent"
+            android:paddingTop="@dimen/dimen_20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/notes_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    tools:listitem="@layout/item_todo_note"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btn_add_notes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="32dp"
+                    app:backgroundTint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/round_post_add_24"
+                    app:tint="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/root_empty_state_image"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:layout_height="250dp"
+            android:layout_width="250dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/white_things">
+        <ImageView
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/empty_state_image"
+                android:scaleType="fitCenter"
+                android:layout_width="@dimen/dimen_100"
+                android:layout_height="@dimen/dimen_100"/>
+        <TextView
+                android:layout_gravity="center|bottom"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/pacifico_regular"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@string/write_todo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

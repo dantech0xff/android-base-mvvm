@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/noteDetailRootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/noteDetailLayout"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:fontFamily="@font/pacifico_regular"
+            android:gravity="start"
+            android:hint="@string/title"
+            android:textStyle="bold"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="60"
+            android:maxLines="3"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_things"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="Autofill" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/note_edit_text"
+            tools:ignore="Autofill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:fontFamily="@font/pacifico_regular"
+            android:background="@null"
+            android:gravity="start"
+            android:textColor="@color/white"
+            android:hint="@string/note_description"
+            android:textColorHint="@color/white_things"
+            android:padding="12dp"
+            android:paddingBottom="64dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edit_text" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginBottom="@dimen/dimen_12"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/dimen_20"
+            app:cardBackgroundColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.creative.mvvm.ui.view.RatioRecyclerView
+                android:id="@+id/recycler_view_photos"
+                app:rv_ratio="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/button_add_photos"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/dimen_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="@string/add_photo"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/pacifico_regular"
+                    android:textColor="@color/text_primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/outline_add_photo_alternate_24"
+                    android:padding="10dp"
+                    android:tint="@color/text_primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/note_update_time"
+            android:text=""
+            android:textColor="@color/white"
+            android:fontFamily="@font/pacifico_regular"
+            android:textAlignment="textEnd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,32 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="NavigationDrawerStyle">
+
+        <item name="android:textSize">20sp</item><!-- text size in menu-->
+
+        <!-- item size in menu-->
+        <item name="android:listPreferredItemHeightSmall">64dp</item>
+        <item name="listPreferredItemHeightSmall">64dp</item>
+
+        <!-- item padding left in menu-->
+        <item name="android:listPreferredItemPaddingLeft">0dp</item>
+        <item name="listPreferredItemPaddingLeft">0dp</item>
+
+        <!-- item padding right in menu-->
+        <item name="android:listPreferredItemPaddingRight">0dp</item>
+        <item name="listPreferredItemPaddingRight">0dp</item>
+
+        <item name="itemIconSize">32dp</item>
+        <item name="android:fontFamily">@font/pacifico_regular</item>
+        <item name="fontFamily">@font/pacifico_regular</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>
