@@ -18,34 +18,33 @@ class IAPRemoveAdsHelper @Inject constructor(private val context: Application) :
     private val billingClient: BillingClient by lazy {
         BillingClient.newBuilder(context).setListener(this).enablePendingPurchases().build()
     }
-    private var skuRemoveAdsDetail: SkuDetails? = null
+    private var productDetails: ProductDetails? = null
 
     init {
         init()
     }
 
-    private val isBillingReady: Boolean
-        get() = skuRemoveAdsDetail != null && billingClient.isReady
-
     private fun init() {
         billingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(billingResult: BillingResult) {
                 if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                    val params = SkuDetailsParams.newBuilder()
-                    val skuList = ArrayList<String>()
-                    skuList.add(COM_CREATIVE_MVVM_REMOVE_ADS)
-                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP)
-                    billingClient.querySkuDetailsAsync(params.build()) { _billingResult, skuDetailsList ->
+                    val queryProductDetailsParams =
+                        QueryProductDetailsParams.newBuilder()
+                            .setProductList(
+                                listOf(
+                                    QueryProductDetailsParams.Product.newBuilder()
+                                        .setProductId(COM_CREATIVE_MVVM_REMOVE_ADS)
+                                        .setProductType(BillingClient.ProductType.INAPP)
+                                        .build()
+                                )
+                            )
+                            .build()
+                    billingClient.queryProductDetailsAsync(queryProductDetailsParams) { _billingResult,
+                                                                                        productDetailsList ->
                         if (_billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                            if (skuDetailsList != null) {
-                                for (skuDetail in skuDetailsList) {
-                                    if (skuDetail != null && !TextUtils.isEmpty(skuDetail.sku)) {
-                                        if (skuDetail.sku == COM_CREATIVE_MVVM_REMOVE_ADS) {
-                                            skuRemoveAdsDetail = skuDetail
-                                            XLog.d("skuRemoveAdsDetail " + skuRemoveAdsDetail.toString())
-                                            break
-                                        }
-                                    }
+                            productDetailsList.forEach {
+                                if (it.productId == COM_CREATIVE_MVVM_REMOVE_ADS) {
+                                    productDetails = it
                                 }
                             }
                         }
@@ -58,18 +57,24 @@ class IAPRemoveAdsHelper @Inject constructor(private val context: Application) :
     }
 
     fun makePurchaseRemoveAds(activity: Activity) {
-        try {
-            if (isBillingReady) {
-                val flowParams = BillingFlowParams.newBuilder()
-                    .setSkuDetails(skuRemoveAdsDetail!!)
-                    .build()
-                billingClient.launchBillingFlow(activity, flowParams)
-            } else {
-                XToast.show(activity, activity.getString(R.string.no_internet_error))
-                init()
-            }
-        } catch (e: Exception) {
-            XLog.e(e)
+        if (productDetails == null) {
+            XToast.show(activity, activity.getString(R.string.no_internet_error))
+            init()
+            return
+        }
+
+        productDetails?.let { product ->
+            billingClient.launchBillingFlow(
+                activity, BillingFlowParams.newBuilder()
+                    .setProductDetailsParamsList(
+                        listOf(
+                            BillingFlowParams.ProductDetailsParams.newBuilder()
+                                // retrieve a value for "productDetails" by calling queryProductDetailsAsync()
+                                .setProductDetails(product)
+                                .build()
+                        )
+                    ).build()
+            )
         }
     }
 
@@ -83,7 +88,7 @@ class IAPRemoveAdsHelper @Inject constructor(private val context: Application) :
         } else if (billingResult.responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
             if (purchases != null) {
                 for (purchase in purchases) {
-                    if (purchase.sku == COM_CREATIVE_MVVM_REMOVE_ADS) {
+                    if (purchase.products.contains(COM_CREATIVE_MVVM_REMOVE_ADS)) {
                         EventBus.getDefault().post(IAPEvent(IAPEvent.State.REMOVE_ADS_SUCCESS))
                     }
                 }
@@ -98,16 +103,15 @@ class IAPRemoveAdsHelper @Inject constructor(private val context: Application) :
     private fun handlePurchase(purchase: Purchase) {
         try {
             if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED) {
-                if (purchase.sku == COM_CREATIVE_MVVM_REMOVE_ADS && !purchase.isAcknowledged) {
-                    val acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
-                        .setPurchaseToken(purchase.purchaseToken)
-                        .build()
-                    billingClient.acknowledgePurchase(acknowledgePurchaseParams) {
-
-                    }
-                }
-                if (purchase.sku == COM_CREATIVE_MVVM_REMOVE_ADS) {
+                if (purchase.products.contains(COM_CREATIVE_MVVM_REMOVE_ADS)) {
                     EventBus.getDefault().post(IAPEvent(IAPEvent.State.REMOVE_ADS_SUCCESS))
+                    if (!purchase.isAcknowledged) {
+                        billingClient.acknowledgePurchase(
+                            AcknowledgePurchaseParams.newBuilder()
+                                .setPurchaseToken(purchase.purchaseToken)
+                                .build()
+                        ) {}
+                    }
                 }
             }
         } catch (e: Exception) {

@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.creative.mvvm.R
+import com.creative.mvvm.data.app.AppRepo
 import com.creative.mvvm.databinding.ActivityLauncherBinding
 import com.creative.mvvm.di.component.ActivityComponent
 import com.creative.mvvm.event.IAPEvent
@@ -24,6 +25,9 @@ class XLauncherActivity : BaseActivity<ActivityLauncherBinding, XLauncherViewMod
 
     @Inject
     lateinit var admobHelper: AdmobHelper
+
+    @Inject
+    lateinit var appRepo: AppRepo
 
     private val navController by lazy { findNavController(R.id.nav_host_container) }
 
@@ -76,7 +80,7 @@ class XLauncherActivity : BaseActivity<ActivityLauncherBinding, XLauncherViewMod
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onIAPEvent(event: IAPEvent) {
         if (event.state == IAPEvent.State.REMOVE_ADS_SUCCESS) {
-            Utils.setRemoveAds(true)
+            appRepo.setRemoveAds(true)
         }
     }
 
