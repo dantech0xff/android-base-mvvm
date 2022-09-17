@@ -7,6 +7,7 @@ import com.creative.mvvm.factory.viewModelFactory
 import com.creative.mvvm.ui.base.BaseFragment
 import com.creative.mvvm.ui.note.NoteFragmentViewModel
 import com.creative.mvvm.ui.note.view.UpdateNoteFragmentViewModel
+import com.creative.mvvm.usecase.notes.*
 import dagger.Module
 import dagger.Provides
 
@@ -17,10 +18,19 @@ class FragmentModule (private val fragment: BaseFragment<*,*>) {
     fun provideLinearLayoutManager(): LinearLayoutManager = LinearLayoutManager(fragment.context)
 
     @Provides
-    fun provideNoteFragmentViewModel(noteRepo: NoteRepo): NoteFragmentViewModel =
-        ViewModelProvider(fragment, viewModelFactory { NoteFragmentViewModel(noteRepo) })[NoteFragmentViewModel::class.java]
+    fun provideNoteFragmentViewModel(fetchAllNotesUseCase: FetchAllNotesUseCase): NoteFragmentViewModel =
+        ViewModelProvider(
+            fragment,
+            viewModelFactory { NoteFragmentViewModel(fetchAllNotesUseCase) })[NoteFragmentViewModel::class.java]
 
     @Provides
-    fun provideViewNoteFragmentViewModel(noteRepo: NoteRepo): UpdateNoteFragmentViewModel =
-        ViewModelProvider(fragment, viewModelFactory { UpdateNoteFragmentViewModel(noteRepo) })[UpdateNoteFragmentViewModel::class.java]
+    fun provideViewNoteFragmentViewModel(
+        getTODONoteUseCase: GetTODONoteUseCase,
+        insertNoteUseCase: InsertNoteUseCase,
+        deleteNoteUseCase: DeleteNoteUseCase,
+        updateNoteUseCase: UpdateNoteUseCase
+    ): UpdateNoteFragmentViewModel =
+        ViewModelProvider(fragment, viewModelFactory {
+            UpdateNoteFragmentViewModel(getTODONoteUseCase, insertNoteUseCase, deleteNoteUseCase, updateNoteUseCase)
+        })[UpdateNoteFragmentViewModel::class.java]
 }

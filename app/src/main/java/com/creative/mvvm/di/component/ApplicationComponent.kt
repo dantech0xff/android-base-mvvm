@@ -12,6 +12,7 @@ import com.creative.mvvm.di.FileDirectory
 import com.creative.mvvm.di.module.ApplicationModule
 import com.creative.mvvm.google.AdmobHelper
 import com.creative.mvvm.google.IAPRemoveAdsHelper
+import com.creative.mvvm.utils.BaseSchedulerProvider
 import dagger.Component
 import java.io.File
 import javax.inject.Singleton
@@ -42,4 +43,6 @@ interface ApplicationComponent {
     fun getNoteRepo(): NoteRepo
 
     fun getAppRepo(): AppRepo
+
+    fun getAppScheduler(): BaseSchedulerProvider
 }

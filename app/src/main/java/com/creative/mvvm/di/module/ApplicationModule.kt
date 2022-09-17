@@ -9,6 +9,8 @@ import com.creative.mvvm.data.app.AppRepo
 import com.creative.mvvm.di.ApplicationContext
 import com.creative.mvvm.di.CacheDirectory
 import com.creative.mvvm.di.FileDirectory
+import com.creative.mvvm.utils.BaseSchedulerProvider
+import com.creative.mvvm.utils.AppSchedulerProviderImpl
 import dagger.Module
 import dagger.Provides
 import java.io.File
@@ -55,4 +57,8 @@ class ApplicationModule (private val application: MvvmApp) {
     @Provides
     @Singleton
     fun provideAppRepo(appRepoImpl: AppRepoImpl): AppRepo = appRepoImpl
+
+    @Provides
+    @Singleton
+    fun provideAppSchedulerProvider(appSchedulerProviderImpl: AppSchedulerProviderImpl): BaseSchedulerProvider = appSchedulerProviderImpl
 }
