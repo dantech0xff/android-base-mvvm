@@ -35,6 +35,7 @@ android {
     buildToolsVersion = '30.0.3'
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

@@ -81,4 +81,9 @@ constructor(private val getTODONoteUseCase: GetTODONoteUseCase,
             deleteNote(note.id)
         }
     }
+
+    interface UpdateNoteFragmentUiEvent {
+        fun addPhotoClick()
+        fun fabSaveNoteClick()
+    }
 }

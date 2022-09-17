@@ -48,7 +48,7 @@ import javax.inject.Inject
 
 
 class UpdateNoteFragment : BaseFragment<UpdateNoteFragmentBinding, UpdateNoteFragmentViewModel>(),
-    View.OnClickListener, XToolbar.ClickListener, PhotoListAdapter.PhotoListAdapterListener {
+    XToolbar.ClickListener, PhotoListAdapter.PhotoListAdapterListener, UpdateNoteFragmentViewModel.UpdateNoteFragmentUiEvent {
 
     @Inject
     @CacheDirectory
@@ -93,6 +93,9 @@ class UpdateNoteFragment : BaseFragment<UpdateNoteFragmentBinding, UpdateNoteFra
     }
 
     override fun setupView(view: View, savedInstanceState: Bundle?) {
+        viewBinding?.uiEvent = this@UpdateNoteFragment
+        viewBinding?.wrapNoteContent?.uiEvent = this@UpdateNoteFragment
+
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
@@ -117,12 +120,10 @@ class UpdateNoteFragment : BaseFragment<UpdateNoteFragmentBinding, UpdateNoteFra
                 recyclerViewPhotos.layoutManager = GridLayoutManager(requireContext(),1).apply {
                     orientation = GridLayoutManager.HORIZONTAL
                 }
-                buttonAddPhotos.setOnClickListener(this@UpdateNoteFragment)
             }
 
 
             fabSaveNote.apply {
-                setOnClickListener(this@UpdateNoteFragment)
                 visibility = View.VISIBLE
             }
 
@@ -143,22 +144,6 @@ class UpdateNoteFragment : BaseFragment<UpdateNoteFragmentBinding, UpdateNoteFra
             XAnimationUtils.fadeInView(
                 updateNoteContainer,
                 500)
-        }
-    }
-
-    override fun onClick(v: View) {
-        when (v) {
-            viewBinding?.fabSaveNote -> {
-                if (!textChanged && noteHasContent()) {
-                    doShareScreenshot()
-                } else {
-                    doUpdateCurrentNote(exitAfterUpdateDone = false)
-                }
-            }
-
-            viewBinding?.wrapNoteContent?.buttonAddPhotos -> {
-                pickNotePhotos()
-            }
         }
     }
 
@@ -188,6 +173,7 @@ class UpdateNoteFragment : BaseFragment<UpdateNoteFragmentBinding, UpdateNoteFra
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -489,5 +475,17 @@ class UpdateNoteFragment : BaseFragment<UpdateNoteFragmentBinding, UpdateNoteFra
             Utils.delFile(Uri.parse(updatingNote.photoPath))
         }
         updatingNote.photoPath = ""
+    }
+
+    override fun addPhotoClick() {
+        pickNotePhotos()
+    }
+
+    override fun fabSaveNoteClick() {
+        if (!textChanged && noteHasContent()) {
+            doShareScreenshot()
+        } else {
+            doUpdateCurrentNote(exitAfterUpdateDone = false)
+        }
     }
 }

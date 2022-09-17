@@ -21,8 +21,7 @@ import com.creative.mvvm.utils.XAnimationUtils
 import javax.inject.Inject
 
 class NoteFragment : BaseFragment<NotesFragmentBinding, NoteFragmentViewModel>()
-    , View.OnClickListener
-    , XToolbar.ClickListener {
+    , XToolbar.ClickListener, NoteFragmentViewModel.NoteFragmentUiEvent {
 
     @Inject
     lateinit var admobHelper: AdmobHelper
@@ -44,6 +43,8 @@ class NoteFragment : BaseFragment<NotesFragmentBinding, NoteFragmentViewModel>()
 
     override fun setupView(view: View, savedInstanceState: Bundle?) {
 
+        viewBinding?.noteFragmentUiEvent = this@NoteFragment
+
         viewBinding?.xToolBar?.apply {
             setRightMenuButtonVisible(View.GONE)
             setTitleTextVisible(View.VISIBLE)
@@ -51,14 +52,12 @@ class NoteFragment : BaseFragment<NotesFragmentBinding, NoteFragmentViewModel>()
             setToolbarClickListener(this@NoteFragment)
         }
         viewBinding?.apply {
-            btnAddNotes.setOnClickListener(this@NoteFragment)
             btnAddNotes.startAnimation(
                 AnimationUtils.loadAnimation(
                     requireContext(),
                     R.anim.red_dot_animation
                 )
             )
-            rootEmptyStateImage.setOnClickListener(this@NoteFragment)
             notesRv.apply {
                 adapter = noteAdapter
                 layoutManager = LinearLayoutManager(activity)
@@ -73,14 +72,6 @@ class NoteFragment : BaseFragment<NotesFragmentBinding, NoteFragmentViewModel>()
             )
         }
         viewModel.updateListNotes()
-    }
-
-    override fun onClick(v: View) {
-        when (v) {
-            viewBinding?.btnAddNotes, viewBinding?.rootEmptyStateImage -> {
-                findNavController().navigate(R.id.action_noteFragment_to_updateNoteFragment)
-            }
-        }
     }
 
     override fun setupObservers() {
@@ -105,4 +96,7 @@ class NoteFragment : BaseFragment<NotesFragmentBinding, NoteFragmentViewModel>()
     }
 
     override fun onMenuRightClick() {}
+    override fun addNewNoteClick() {
+        findNavController().navigate(R.id.action_noteFragment_to_updateNoteFragment)
+    }
 }

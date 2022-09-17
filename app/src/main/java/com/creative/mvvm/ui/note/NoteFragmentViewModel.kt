@@ -21,4 +21,8 @@ class NoteFragmentViewModel(
                 _listNoteLiveData.value = ArrayList()
             }).addTo(disposableCollector)
     }
+
+    interface NoteFragmentUiEvent {
+        fun addNewNoteClick()
+    }
 }
