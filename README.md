@@ -13,7 +13,7 @@ If you can't imagine what is MVVM, please read my medium article here first. It 
 ### Some idea to improve
 - [x] Separate logic by UseCase
 - [x] Apply MockK in Unit Test
-- [ ] Apply DataBinding
+- [x] Apply DataBinding
 - [ ] Apply StateFlow, SharedFlow in ViewModel
 - [ ] Migrate RxJava2 to Coroutine
 - [ ] Migrate Dagger2 to Hilt
