@@ -11,10 +11,11 @@ If you can't imagine what is MVVM, please read my medium article here first. It 
 - https://medium.com/@danhtran-dev
 
 ### Some idea to improve
-- [ ] Migrate Dagger2 to Hilt
+- [x] Separate logic by UseCase
 - [ ] Apply DataBinding
 - [ ] Apply StateFlow, SharedFlow in ViewModel
 - [ ] Migrate RxJava2 to Coroutine
+- [ ] Migrate Dagger2 to Hilt
 - [ ] Apply MockK in Unit Test
 
 
