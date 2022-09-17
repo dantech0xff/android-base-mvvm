@@ -37,9 +37,8 @@ constructor(private val getTODONoteUseCase: GetTODONoteUseCase,
     }
 
     fun deleteNote(id: Int) {
-        deleteNoteUseCase.execute(id).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ t ->
+        deleteNoteUseCase.execute(id)
+            .subscribe({
                 _exitNoteLiveData.value = true
             }, {
                 _exitNoteLiveData.value = true
